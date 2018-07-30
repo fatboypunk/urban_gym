@@ -33,7 +33,7 @@ title: Urban Gyms Groningen
      oosterkade.bindPopup("<b>Oosterkade</b> <br><br> <a onclick=\"navigate(oosterkade_lat_long)\">Navigeren</a> <br><br> <a href=\"#oosterkade\">Lees meer</a> <br>");
      damsterpad.bindPopup("<b>Damsterpad</b>  <br><br><a onclick=\"navigate(damsterpad_lat_long)\">Navigeren</a> <br><br> <a href=\"#damsterpad\">Lees meer</a> <br>");
      lewenborg.bindPopup("<b>Lewenborg</b> <br>");
-     paddepoel.bindPopup("<b>Paddepoel</b> <br> Norwell Outdoor Fitness Park <br>>");
+     paddepoel.bindPopup("<b>Paddepoel, Norwell Outdoor Fitness Park</b> <br><br><a onclick=\"navigate(paddepoel_lat_long)\">Navigeren</a> <br><br> <a href=\"#paddepoel\">Lees meer</a>");
      molukkenplantsoen.bindPopup("<b>Molukkenplantsoen</b> <br>>");
      vrydemalaan.bindPopup("<b>Vrydemalaan</b> <br>Parkour park<br> ");
      canadalaan.bindPopup("<b>Canadalaan</b> <br>Buitenfitness Park <br> ");
@@ -76,7 +76,7 @@ title: Urban Gyms Groningen
 </section>
 <section id="oosterkade">
   <article>
-    <h1 >Oosterkade Urban Gym</h1>
+    <h1>Oosterkade, Urban Gym</h1>
     <picture>
       <source type="image/webp" srcset="<%= image_path("gyms/urban-gym-oosterkade.webp") %>" />
       <source type="image/jpg" srcset="<%= image_path("gyms/urban-gym-oosterkade.jpg") %>" />
@@ -91,5 +91,14 @@ title: Urban Gyms Groningen
       <source type="image/webp" srcset="<%= image_path("gyms/outdoor-fitness-damsterpad") %>" />
       <source type="image/jpg" srcset="<%= image_path("gyms/outdoor-fitness-damsterpad") %>" />
         <%= image_tag("gyms/outdoor-fitness-damsterpad.jpg") %>
+  </article>
+</section>
+
+<section id="paddepoel">
+  <article>
+    <h1>Paddepoel, Norwell Outdoor Fitness Park</h1>
+      <source type="image/webp" srcset="<%= image_path("gyms/outdoor-fitness-paddepoel") %>" />
+      <source type="image/jpg" srcset="<%= image_path("gyms/outdoor-fitness-paddepoel") %>" />
+        <%= image_tag("gyms/outdoor-fitness-paddepoel.jpg") %>
   </article>
 </section>
