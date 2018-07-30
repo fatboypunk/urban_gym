@@ -11,41 +11,97 @@
     <script src="javascripts/site.js"></script>
   </head>
   <body>
-    <h1>
-  Urban Gyms Groningen
-</h1>
- <div id="mapid"></div>
- <script>
-   var mymap = L.map('mapid').setView([53.21938, 6.56650], 13);
+    <section>
+  <h1>
+    Urban Gyms Groningen
+  </h1>
+   <div id="mapid"></div>
+   <script>
+     var mymap = L.map('mapid').setView([53.21938, 6.56650], 13);
 
-   var oosterkade = L.marker([53.216479, 6.576552]).addTo(mymap);
-   var damsterpad = L.marker([53.221767, 6.594858]).addTo(mymap);
-   var lewenborg = L.marker([53.242230, 6.623363]).addTo(mymap);
-   var paddepoel = L.marker([53.233852, 6.531200]).addTo(mymap);
-   var molukkenplantsoen = L.marker([53.235733, 6.570723]).addTo(mymap);
-   var vrydemalaan = L.marker([53.226116, 6.570029]).addTo(mymap);
-   var canadalaan = L.marker([53.201869, 6.5627449999999]).addTo(mymap);
-   var ypemaheerd = L.marker([53.249384, 6.602012]).addTo(mymap);
-   var vinkhuizen = L.marker([53.228043, 6.522601]).addTo(mymap);
+     const oosterkade_lat_long = [53.216479, 6.576552];
+     const damsterpad_lat_long = [53.221767, 6.594858];
+     const lewenborg_lat_long = [53.242230, 6.623363];
+     const paddepoel_lat_long = [53.233852, 6.531200];
+     const molukkenplantsoen_lat_long = [53.235733, 6.570723];
+     const vrydemalaan_lat_long = [53.226116, 6.570029];
+     const canadalaan_lat_long = [53.201869, 6.5627449999999];
+     const ypemaheerd_lat_long = [53.249384, 6.602012];
+     const vinkhuizen_lat_long = [53.228043, 6.522601];
 
-   oosterkade.bindPopup("<b>Oosterkade</b> <br>");
-   damsterpad.bindPopup("<b>Damsterpad</b> <br>");
-   lewenborg.bindPopup("<b>Lewenborg</b> <br>");
-   paddepoel.bindPopup("<b>Paddepoel</b> <br> Norwell Outdoor Fitness Park <br>>");
-   molukkenplantsoen.bindPopup("<b>Molukkenplantsoen</b> <br>>");
-   vrydemalaan.bindPopup("<b>Vrydemalaan</b> <br>Parkour park<br> ");
-   canadalaan.bindPopup("<b>Canadalaan</b> <br>Buitenfitness Park <br> ");
-   ypemaheerd.bindPopup("<b>Ypemaheerd</b> <br>Playground <br> ");
-   vinkhuizen.bindPopup("<b>Vinkhuizen</b> <br> ");
+     var oosterkade = L.marker(oosterkade_lat_long).addTo(mymap);
+     var damsterpad = L.marker(damsterpad_lat_long).addTo(mymap);
+     var lewenborg = L.marker(lewenborg_lat_long).addTo(mymap);
+     var paddepoel = L.marker(paddepoel_lat_long).addTo(mymap);
+     var molukkenplantsoen = L.marker(molukkenplantsoen_lat_long).addTo(mymap);
+     var vrydemalaan = L.marker(vrydemalaan_lat_long).addTo(mymap);
+     var canadalaan = L.marker(canadalaan_lat_long).addTo(mymap);
+     var ypemaheerd = L.marker(ypemaheerd_lat_long).addTo(mymap);
+     var vinkhuizen = L.marker(vinkhuizen_lat_long).addTo(mymap);
 
-   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Urban Gyms Groningen',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiZmF0Ym95cHVuayIsImEiOiJjamsxMGZnaHEwYmtoM3ZvenE5NzBwb3NyIn0.TUJEYug0_xdI8VoBjrrZNQ'
-   }).addTo(mymap);
+     oosterkade.bindPopup("<b>Oosterkade</b> <br><br> <a onclick=\"navigate(oosterkade_lat_long)\">Navigeren</a> <br><br> <a href=\"#oosterkade\">Lees meer</a> <br>");
+     damsterpad.bindPopup("<b>Damsterpad</b>  <br><br><a onclick=\"navigate(damsterpad_lat_long)\">Navigeren</a> <br><br> <a href=\"#damsterpad\">Lees meer</a> <br>");
+     lewenborg.bindPopup("<b>Lewenborg</b> <br>");
+     paddepoel.bindPopup("<b>Paddepoel</b> <br> Norwell Outdoor Fitness Park <br>>");
+     molukkenplantsoen.bindPopup("<b>Molukkenplantsoen</b> <br>>");
+     vrydemalaan.bindPopup("<b>Vrydemalaan</b> <br>Parkour park<br> ");
+     canadalaan.bindPopup("<b>Canadalaan</b> <br>Buitenfitness Park <br> ");
+     ypemaheerd.bindPopup("<b>Ypemaheerd</b> <br>Playground <br> ");
+     vinkhuizen.bindPopup("<b>Vinkhuizen</b> <br> ");
 
- </script>
+     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Urban Gyms Groningen',
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoiZmF0Ym95cHVuayIsImEiOiJjamsxMGZnaHEwYmtoM3ZvenE5NzBwb3NyIn0.TUJEYug0_xdI8VoBjrrZNQ'
+     }).addTo(mymap);
+
+     function navigate([lat, lng]) {
+       // If it's an iPhone..
+       if ((navigator.platform.indexOf("iPhone") !== -1) || (navigator.platform.indexOf("iPod") !== -1)) {
+         function iOSversion() {
+           if (/iP(hone|od|ad)/.test(navigator.platform)) {
+             // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
+             var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+             return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+           }
+         }
+         var ver = iOSversion() || [0];
+
+         if (ver[0] >= 6) {
+           protocol = 'maps://';
+         } else {
+           protocol = 'http://';
+
+         }
+         window.location = protocol + 'maps.apple.com/maps?daddr=' + lat + ',' + lng + '&amp;ll=';
+       }
+       else {
+         window.open('http://maps.google.com?daddr=' + lat + ',' + lng + '&amp;ll=');
+       }
+     }
+
+  </script>
+</section>
+<section id="oosterkade">
+  <article>
+    <h1 >Oosterkade Urban Gym</h1>
+    <picture>
+      <source type="image/webp" srcset="images/gyms/urban-gym-oosterkade.webp" />
+      <source type="image/jpg" srcset="images/gyms/urban-gym-oosterkade.jpg" />
+        <img src="images/gyms/urban-gym-oosterkade.jpg" alt="Urban gym oosterkade" />
+    </picture>
+  </article>
+</section>
+
+<section id="damsterpad">
+  <article>
+    <h1>Damsterpad</h1>
+      <source type="image/webp" srcset="images/gyms/outdoor-fitness-damsterpad" />
+      <source type="image/jpg" srcset="images/gyms/outdoor-fitness-damsterpad" />
+        <img src="images/gyms/outdoor-fitness-damsterpad.jpg" alt="Outdoor fitness damsterpad" />
+  </article>
+</section>
 
   </body>
 </html>
