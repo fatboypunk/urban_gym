@@ -42,6 +42,7 @@ page '/*.txt', layout: false
 
 # Build-specific configuration
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
+#
 
 configure :build do
   activate :minify_css
