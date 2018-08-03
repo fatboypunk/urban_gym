@@ -39,14 +39,14 @@
      var ypemaheerd = L.marker(ypemaheerd_lat_long).addTo(mymap);
      var vinkhuizen = L.marker(vinkhuizen_lat_long).addTo(mymap);
 
-     oosterkade.bindPopup("<b>Oosterkade</b> <br><br> <a onclick=\"navigate(oosterkade_lat_long)\">Navigeren</a> <br><br> <a href=\"#oosterkade\">Lees meer</a> <br>");
+     oosterkade.bindPopup("<b>Oosterkade</b> <br> Urban Gym<br><br> <a onclick=\"navigate(oosterkade_lat_long)\">Navigeren</a> <br><br> <a href=\"#oosterkade\">Lees meer</a> <br>");
      damsterpad.bindPopup("<b>Damsterpad</b>  <br><br><a onclick=\"navigate(damsterpad_lat_long)\">Navigeren</a> <br><br> <a href=\"#damsterpad\">Lees meer</a> <br>");
      lewenborg.bindPopup("<b>Lewenborg</b> <br>");
-     paddepoel.bindPopup("<b>Paddepoel</b> <br> Norwell Outdoor Fitness Park <br>>");
+     paddepoel.bindPopup("<b>Paddepoel, <br>Norwell Outdoor Fitness Park</b><br><br><a onclick=\"navigate(paddepoel_lat_long)\">Navigeren</a> <br><br> <a href=\"#paddepoel\">Lees meer</a>");
      molukkenplantsoen.bindPopup("<b>Molukkenplantsoen</b> <br>>");
      vrydemalaan.bindPopup("<b>Vrydemalaan</b> <br>Parkour park<br> ");
      canadalaan.bindPopup("<b>Canadalaan</b> <br>Buitenfitness Park <br> ");
-     ypemaheerd.bindPopup("<b>Ypemaheerd</b> <br>Playground <br> ");
+     ypemaheerd.bindPopup("<b>Ypemaheerd</b> <br>Kraijceck Playground <br><br> <a onclick=\"navigate(ypemaheerd_lat_long)\">Navigeren</a> <br><br> <a href=\"#ypemaheerd\">Lees meer</a>");
      vinkhuizen.bindPopup("<b>Vinkhuizen</b> <br> ");
 
      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -83,23 +83,34 @@
 
   </script>
 </section>
-<section id="oosterkade">
-  <article>
-    <h1 >Oosterkade Urban Gym</h1>
+<section id="uitleg">
+  <article id="oosterkade">
+    <h1>Oosterkade, Urban Gym</h1>
     <picture>
       <source type="image/webp" srcset="images/gyms/urban-gym-oosterkade.webp" />
       <source type="image/jpg" srcset="images/gyms/urban-gym-oosterkade.jpg" />
         <img src="images/gyms/urban-gym-oosterkade.jpg" alt="Urban gym oosterkade" />
     </picture>
   </article>
-</section>
-
-<section id="damsterpad">
-  <article>
+  <article id="damsterpad">
     <h1>Damsterpad</h1>
       <source type="image/webp" srcset="images/gyms/outdoor-fitness-damsterpad" />
       <source type="image/jpg" srcset="images/gyms/outdoor-fitness-damsterpad" />
         <img src="images/gyms/outdoor-fitness-damsterpad.jpg" alt="Outdoor fitness damsterpad" />
+  </article>
+
+  <article id="paddepoel">
+    <h1>Paddepoel, Norwell Outdoor Fitness Park</h1>
+      <source type="image/webp" srcset="images/gyms/outdoor-fitness-paddepoel" />
+      <source type="image/jpg" srcset="images/gyms/outdoor-fitness-paddepoel" />
+        <img src="images/gyms/outdoor-fitness-paddepoel.jpg" alt="Outdoor fitness paddepoel" />
+  </article>
+
+  <article id="ypemaheerd">
+    <h1>Ypemaheerd, Kraijceck playground</h1>
+      <source type="image/webp" srcset="images/gyms/buitenfitness-ypemaheerd" />
+      <source type="image/jpg" srcset="images/gyms/buitenfitness-ypemaheerd" />
+        <img src="images/gyms/buitenfitness-ypemaheerd.jpg" alt="Buitenfitness ypemaheerd" />
   </article>
 </section>
 
