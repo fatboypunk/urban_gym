@@ -3,7 +3,28 @@
 #
 activate :relative_assets
 activate :livereload
-activate :sprockets
+
+config[:images_dir] = "images"
+class ImportedAssetPathProcessor
+  attr_reader :app
+  def initialize(app)
+    @app = app
+  end
+  def call(sprockets_asset)
+    directory = case sprockets_asset.logical_path
+                when /^images\// then app.config[:images_dir]
+                else
+                  "imported"
+                end
+    relative_path = sprockets_asset.logical_path.sub(/^#{directory}/, '')
+    File.join(directory, relative_path)
+  end
+end
+
+activate :sprockets do |config|
+  config.imported_asset_path = ImportedAssetPathProcessor.new(app)
+end
+
 activate :autoprefixer do |prefix|
   prefix.browsers = "last 2 versions"
 end
@@ -46,5 +67,5 @@ page '/*.txt', layout: false
 
 configure :build do
   activate :minify_css
-  # activate :minify_javascript
+  activate :minify_javascript
 end
